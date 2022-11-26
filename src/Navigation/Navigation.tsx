@@ -1,0 +1,31 @@
+import styles from './Navigation.module.scss';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import SessionContext from '../context/session/sessionContext';
+import { useSession } from '../hooks/useSession';
+import { useProfile } from '../hooks/useProfile';
+
+const Navigation = () => {
+    const { session } = useSession();
+    const { signOut } = useProfile(session);
+
+    return (
+        <div className={styles.navigation}>
+            <Link to="profile-settings">Profile Settings</Link>
+
+            {session ? (
+                <button
+                    type="button"
+                    className="button block"
+                    onClick={signOut}
+                >
+                    Sign Out
+                </button>
+            ) : (
+                <div>Sign In</div>
+            )}
+        </div>
+    );
+};
+
+export default Navigation;
