@@ -23,21 +23,25 @@ export const useProfile = (session) => {
 
         console.log('user', user);
         try {
-            let { data, error, status } = await supabase
-                .from('profiles')
-                .select(`username, website, avatar_url`)
-                .eq('id', user.id)
-                .single();
+            // let { data, error, status } = await supabase
+            //     .from('profiles')
+            //     .select(`username, website, avatar_url`)
+            //     .eq('id', user.id)
+            //     .single();
 
-            if (error && status !== 406) {
-                throw error;
-            }
+            // console.log("data", data)
+            // console.log("error", error)
+            // console.log("status", status)
 
-            if (data) {
-                setUsername(data.username);
-                setWebsite(data.website);
-                setAvatarUrl(data.avatar_url);
-            }
+            // if (error && status !== 406) {
+            //     throw error;
+            // }
+
+            // if (data) {
+            //     setUsername(data.username);
+            //     setWebsite(data.website);
+            //     setAvatarUrl(data.avatar_url);
+            // }
         } catch (error) {
             console.log('ERROR', error);
         }
