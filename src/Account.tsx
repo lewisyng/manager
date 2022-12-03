@@ -1,47 +1,9 @@
-import { useEffect, useState } from 'react';
-import { supabase } from './supabaseClient';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useTodo } from './hooks/useTodo';
 
 const Account = () => {
-    const [todo, setTodo] = useState('');
-    const [todos, setTodos] = useState<any[]>([]);
-
-    const [hasRendered, setHasRendered] = useState(false);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        setHasRendered(true)
-
-        setTodos([...todos, { label: todo }]);
-        setTodo('');
-
-        const { error } = await supabase.from('todo').insert({ label: todo });
-
-        if (error) return error;
-
-        const { data, error: err } = await supabase.from('todo').select();
-
-        if (err) return err;
-
-        setTodos(data);
-    };
-
-    useEffect(() => {
-        const getData = async () => {
-            const { data, error: err } = await supabase
-                .from('todo')
-                .select('label');
-
-            console.log('data', data);
-
-            if (err) return err;
-
-            setTodos(data);
-        };
-
-        getData();
-    }, []);
+    const { hasRendered, todo, setTodo, todos, handleSubmit, deleteTodo } =
+        useTodo();
 
     return (
         <div className="container font-bold">
@@ -66,6 +28,7 @@ const Account = () => {
                                 animate={{ opacity: 1, marginTop: 0 }}
                                 exit={{ opacity: 0, marginTop: '10px' }}
                                 transition={{ duration: 0.2 }}
+                                onClick={() => deleteTodo(todo)}
                             >
                                 {todo.label}
                             </motion.div>

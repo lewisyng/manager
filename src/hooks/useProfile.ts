@@ -80,6 +80,7 @@ export const useProfile = (session) => {
         website,
         avatarUrl,
         getProfile,
+        getUser,
         setUsername,
         setWebsite,
         setAvatarUrl,
