@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
-import { useProfile } from "./useProfile";
-import { useSession } from "./useSession";
+import { useEffect, useState } from 'react';
+import { supabase } from '../supabaseClient';
+import { useProfile } from './useProfile';
+import { useSession } from './useSession';
 
 export const useTodo = () => {
     const [todos, setTodos] = useState<any[]>([]);
@@ -26,8 +26,6 @@ export const useTodo = () => {
         const getData = async () => {
             const { data, error: err } = await supabase.from('todo').select();
 
-            console.log('data', data);
-
             if (err) return err;
 
             setTodos(data);
@@ -38,17 +36,19 @@ export const useTodo = () => {
 
     const [hasRendered, setHasRendered] = useState(false);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e, todo) => {
         e.preventDefault();
 
         setHasRendered(true);
 
-        setTodos([...todos, { label: todo }]);
+        const { label, title, description } = todo;
+
+        setTodos([...todos, { label, title, description }]);
         setTodo('');
 
         const { error } = await supabase
             .from('todo')
-            .insert({ label: todo, user_id: user.id });
+            .insert({ label, title, description, user_id: user.id });
 
         if (error) return error;
 
@@ -86,6 +86,6 @@ export const useTodo = () => {
         todos,
         deleteTodo,
         handleSubmit,
-        setTodo
-    }
-}
+        setTodo,
+    };
+};
