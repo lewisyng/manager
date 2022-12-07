@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useGetUserQuery } from '../store/api/userApi';
 import { supabase } from '../supabaseClient';
 
 export const useProfile = (session) => {
@@ -6,46 +7,47 @@ export const useProfile = (session) => {
     const [website, setWebsite] = useState<string | null>(null);
     const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
-    useEffect(() => {
-        getProfile();
-    }, [session]);
+    // useEffect(() => {
+    //     getProfile();
+    // }, [session]);
 
     const getUser = async () => {
-        return await supabase.auth.getUser();
+        // return useGetUserQuery();
+        return {data: {}}
     };
 
-    const getProfile = async () => {
-        const {
-            data: { user },
-        } = await getUser();
+    // const getProfile = async () => {
+    //     const {
+    //         data: { user },
+    //     } = await getUser();
 
-        if (!user) return;
+    //     if (!user) return;
 
-        console.log('user', user);
-        try {
-            // let { data, error, status } = await supabase
-            //     .from('profiles')
-            //     .select(`username, website, avatar_url`)
-            //     .eq('id', user.id)
-            //     .single();
+    //     console.log('user', user);
+    //     try {
+    //         let { data, error, status } = await supabase
+    //             .from('profiles')
+    //             .select(`username, website, avatar_url`)
+    //             .eq('id', user.id)
+    //             .single();
 
-            // console.log("data", data)
-            // console.log("error", error)
-            // console.log("status", status)
+    //         console.log("data", data)
+    //         console.log("error", error)
+    //         console.log("status", status)
 
-            // if (error && status !== 406) {
-            //     throw error;
-            // }
+    //         if (error && status !== 406) {
+    //             throw error;
+    //         }
 
-            // if (data) {
-            //     setUsername(data.username);
-            //     setWebsite(data.website);
-            //     setAvatarUrl(data.avatar_url);
-            // }
-        } catch (error) {
-            console.log('ERROR', error);
-        }
-    };
+    //         if (data) {
+    //             setUsername(data.username);
+    //             setWebsite(data.website);
+    //             setAvatarUrl(data.avatar_url);
+    //         }
+    //     } catch (error) {
+    //         console.log('ERROR', error);
+    //     }
+    // };
 
     const updateProfile = async (e) => {
         e.preventDefault();
@@ -79,7 +81,7 @@ export const useProfile = (session) => {
         username,
         website,
         avatarUrl,
-        getProfile,
+        // getProfile,
         getUser,
         setUsername,
         setWebsite,

@@ -5,6 +5,9 @@ import Layout from '../Layout/Layout';
 import Login from '../Auth/Login/Login';
 import { ProfileSettings } from '../ProfileSettings/ProfileSettings';
 import loaders from '../loaders/loader';
+import { useEffect } from 'react';
+import { useAppDispatch } from '../store/store';
+import { loadPage } from '../store/slices/general';
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -31,6 +34,12 @@ const Router = () => {
             ],
         },
     ]);
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(loadPage({}));
+    }, []);
 
     return <RouterProvider router={router} />;
 };
