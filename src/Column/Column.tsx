@@ -8,10 +8,9 @@ type ColumnProps = {
 };
 
 const Column: FunctionComponent<ColumnProps> = ({ column }) => {
-    const { hasRendered, todo, setTodo, todos, handleSubmit, deleteTodo } =
-        useTodo();
-
     const [todoModalOpen, setTodoModalOpen] = useState(false);
+
+    console.log("column", column)
 
     const openTodoModal = () => {
         setTodoModalOpen(true);

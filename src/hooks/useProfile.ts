@@ -12,8 +12,8 @@ export const useProfile = (session) => {
     // }, [session]);
 
     const getUser = async () => {
-        // return useGetUserQuery();
-        return {data: {}}
+        return useGetUserQuery(); 
+        // return {data: {}}
     };
 
     // const getProfile = async () => {

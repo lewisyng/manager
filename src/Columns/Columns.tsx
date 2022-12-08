@@ -4,12 +4,9 @@ import Input from '../ui/Input';
 import Column from '../Column/Column';
 
 const Columns = () => {
-    const [column, setColumn] = useState<string>('');
-    const { columns, isLoading, createColumn, getColumns } = useColumns();
-
     return (
         <>
-            <form onSubmit={(e) => createColumn(e, column)}>
+            {/* <form onSubmit={(e) => createColumn(e, column)}>
                 <div className="flex items-center gap-4">
                     <Input
                         type="text"
@@ -23,10 +20,10 @@ const Columns = () => {
             </form>
 
             <div className="py-4 flex items-center gap-8">
-                {columns && columns.map((column) => {
+                {columns && columns.columns.map((column) => {
                     return <Column key={column.id} column={column} />;
                 })}
-            </div>
+            </div> */}
         </>
     );
 };

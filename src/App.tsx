@@ -4,7 +4,7 @@ import Account from './Account';
 import { useSession } from './hooks/useSession';
 
 export default function App() {
-    const { session } = useSession();
+  const { session } = useSession();
 
-    return !session ? <Auth /> : <Account />;
+  return !session ? <Auth /> : <Account />;
 }
