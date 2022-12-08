@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Columns, ColumnState } from '../types/columns';
 
-const initialState: ColumnState = {
+const initialState = {
     columns: [],
 };
 
@@ -13,9 +13,14 @@ const columnsSlice = createSlice({
         overwriteColumns(state, action: PayloadAction<Columns>) {
             state.columns = action.payload;
         },
+        setColumns(state, action) {
+            state.columns = action.payload
+        }
     },
 });
 
-const { addColumn } = columnsSlice.actions;
+export const { addColumn, setColumns } = columnsSlice.actions;
 
-export default columnsSlice.reducer;
+const {reducer: columnsReducer} = columnsSlice
+
+export default columnsReducer;

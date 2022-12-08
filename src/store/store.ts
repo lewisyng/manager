@@ -4,19 +4,23 @@ import type { TypedUseSelectorHook } from 'react-redux';
 import columnsReducer from './slices/columns';
 import generalReducer from './slices/general';
 import { columnsApi } from './api/columnsApi';
-import listenerMiddleware from './listenerMiddleware';
+import { todosApi } from './api/todosApi';
+import todosReducer from './slices/todos';
+import userReducer from './slices/user';
+import { userApi } from './api/userApi';
 
 const store = configureStore({
     reducer: {
         columns: columnsReducer,
         general: generalReducer,
+        todos: todosReducer,
+        user: userReducer,
         [columnsApi.reducerPath]: columnsApi.reducer,
+        [todosApi.reducerPath]: todosApi.reducer,
+        [userApi.reducerPath]: userApi.reducer
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat([
-            columnsApi.middleware,
-            listenerMiddleware.middleware,
-        ]),
+        getDefaultMiddleware().concat([columnsApi.middleware, todosApi.middleware, userApi.middleware]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

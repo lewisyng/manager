@@ -1,18 +1,18 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { ColumnState } from '../types/columns';
 
-// const selectSlice = createSelector(
-//     (state: RootState): ColumnState => state.columns
-// );
+const selectColumnSlice = createSelector(
+    (state: RootState) => state,
+    state => state.columns
+);
 
 const selectColumns = createSelector(
-    (state: RootState) => state.columns,
+    selectColumnSlice,
     (state) => state.columns
 );
 
 const columnSelectors = {
-    // selectSlice,
+    selectColumnSlice,
     selectColumns,
 };
 

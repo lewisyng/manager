@@ -12,4 +12,6 @@ export const generalSlice = createSlice({
 
 export const { loadPage } = generalSlice.actions;
 
-export default generalSlice.reducer;
+const {reducer: generalReducer} = generalSlice;
+
+export default generalReducer;

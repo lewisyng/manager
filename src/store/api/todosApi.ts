@@ -1,7 +1,7 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react';
 import { supabase } from '../../supabaseClient';
 
-const todoApi = createApi({
+export const todosApi = createApi({
     reducerPath: 'todoApi',
     baseQuery: fakeBaseQuery(),
     endpoints: (builder) => ({
@@ -17,4 +17,4 @@ const todoApi = createApi({
     }),
 });
 
-export const { useGetAllTodosOfUserQuery } = todoApi;
+export const { useGetAllTodosOfUserQuery } = todosApi;

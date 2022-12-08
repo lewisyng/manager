@@ -1,6 +1,6 @@
 import { loadPage } from './slices/general';
 import { createListenerMiddleware } from '@reduxjs/toolkit';
-import { useGetAllTodosOfUserQuery } from './api/todoApi';
+import { useGetAllTodosOfUserQuery } from './api/todosApi';
 
 const listenerMiddleware = createListenerMiddleware();
 
@@ -9,9 +9,9 @@ listenerMiddleware.startListening({
     effect: async () => {
         console.log('load');
 
-        const data = useGetAllTodosOfUserQuery();
+        // const data = useGetAllTodosOfUserQuery();
 
-        console.log("data", data)
+        // console.log("data", data)
     },
 });
 

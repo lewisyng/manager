@@ -10,6 +10,8 @@ export const userApi = createApi({
             queryFn: async () => {
                 const user = await supabase.auth.getUser();
 
+                console.log("await", user)
+
                 return {data: user};
             },
         }),
