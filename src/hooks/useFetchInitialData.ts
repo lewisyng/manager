@@ -22,6 +22,8 @@ export const useFetchInitialData = () => {
     const dispatch = useAppDispatch();
 
     dispatch(setColumns(columns))
+    console.log("ada")
     dispatch(setTodos(todos))
+    console.log("ada")
     dispatch(setUser(user?.data.user))
 }

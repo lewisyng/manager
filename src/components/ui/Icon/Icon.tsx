@@ -1,4 +1,6 @@
-const Icon = () => {
+import { FunctionComponent } from "react";
+
+const Icon: FunctionComponent = () => {
     return <img src="/assets/icons/plus.svg" alt="plus" />;
 };
 

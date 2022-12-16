@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useColumns } from '../hooks/useColumns';
-import Input from '../ui/Input';
+import Input from '../components/ui';
 import Column from '../Column/Column';
 
 const Columns = () => {
-    return (
-        <>
-            {/* <form onSubmit={(e) => createColumn(e, column)}>
+  return (
+    <>
+      {/* <form onSubmit={(e) => createColumn(e, column)}>
                 <div className="flex items-center gap-4">
                     <Input
                         type="text"
@@ -24,8 +24,8 @@ const Columns = () => {
                     return <Column key={column.id} column={column} />;
                 })}
             </div> */}
-        </>
-    );
+    </>
+  );
 };
 
 export default Columns;

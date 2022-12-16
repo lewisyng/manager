@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useGetAllTodosOfUserQuery } from '../store/api/todosApi';
-import todosSelectors from '../store/selectors/todos';
 import userSelectors from '../store/selectors/user';
 import { setTodos } from '../store/slices/todos';
 import { useAppSelector } from '../store/store';
@@ -9,22 +7,15 @@ import { supabase } from '../supabaseClient';
 
 export const useTodo = () => {
   const state = useAppSelector((state) => state);
-  // const todos = todosSelectors.getTodos(state);
   const [todo, setTodo] = useState('');
   const dispatch = useDispatch();
 
-  // const [hasRendered, setHasRendered] = useState(false);
   const user = userSelectors.selectUser(state);
 
   const handleSubmit = async (e, todo) => {
     e.preventDefault();
 
-    // setHasRendered(true);
-
     const { label, title, description, columnId } = todo;
-
-    // dispatch(setTodos([...todos, { label, title, description, columnId }]));
-    // setTodo('');
 
     const { data, error } = await supabase
       .from('todo')
@@ -36,8 +27,8 @@ export const useTodo = () => {
         column: columnId,
       })
       .select();
-      
-      dispatch(setTodos(data))
+
+    dispatch(setTodos(data));
 
     if (error) throw error;
   };
@@ -64,9 +55,7 @@ export const useTodo = () => {
   // };
 
   return {
-    // hasRendered,
     todo,
-    // deleteTodo,
     handleSubmit,
     setTodo,
   };
