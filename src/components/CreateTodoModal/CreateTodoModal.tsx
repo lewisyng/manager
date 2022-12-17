@@ -9,7 +9,8 @@ import { setTodos } from '../../store/slices/todos';
 import { useAppSelector } from '../../store/store';
 import { supabase } from '../../supabaseClient';
 import Modal from '../Modal/Modal';
-import { Icon, Input } from '../ui';
+import { Button, Icon, Input } from '../ui';
+import Select from 'react-select';
 
 const CreateTodoModal: FunctionComponent = () => {
     const [label, setLabel] = useState('');
@@ -50,6 +51,11 @@ const CreateTodoModal: FunctionComponent = () => {
         // closeModal();
     };
 
+    const selectOptions = columns?.map((column) => ({
+        value: column.id,
+        label: column.title,
+    }));
+
     return (
         <Modal
             opener={
@@ -62,10 +68,16 @@ const CreateTodoModal: FunctionComponent = () => {
         >
             <Dialog containerClassNames="bg-white">
                 <div className="mb-6">
-                    <p className="text-2xl font-bold uppercase">Add todo</p>
+                    <p className="text-2xl font-bold uppercase text-gray-100">
+                        Add todo
+                    </p>
                 </div>
 
-                <form className="grow flex flex-col" onSubmit={_handleSubmit}>
+                <form
+                    className="grow flex flex-col"
+                    onSubmit={_handleSubmit}
+                    autoComplete="off"
+                >
                     <div className="flex flex-col gap-4 grow">
                         <Input
                             name="label"
@@ -88,32 +100,42 @@ const CreateTodoModal: FunctionComponent = () => {
                             onChange={(e) => setDescription(e.target.value)}
                         />
 
-                        <label>
-                            Columns
-                            <select
-                                name="column"
-                                id="column"
-                                value={columnId}
-                                onChange={(e) => setColumnId(e.target.value)}
-                            >
-                                <option value="" disabled selected>
-                                    Select a column
-                                </option>
-                                {columns &&
-                                    columns.map((column) => (
-                                        <option
-                                            key={column.id}
-                                            value={column.id}
-                                        >
-                                            {column.title}
-                                        </option>
-                                    ))}
-                            </select>
-                        </label>
+                        {selectOptions && (
+                            <Select
+                                aria-label="Select a column"
+                                options={[
+                                    {
+                                        value: '',
+                                        label: 'Select a column',
+                                    },
+                                    ...selectOptions,
+                                ]}
+                                onChange={(e) => setColumnId(e.value)}
+                            />
+                        )}
+
+                        {/* <select
+                            name="column"
+                            id="column"
+                            value={columnId}
+                            onChange={(e) => setColumnId(e.target.value)}
+                        >
+                            <option value="" disabled selected>
+                                Select a column
+                            </option>
+                            {columns &&
+                                columns.map((column) => (
+                                    <option key={column.id} value={column.id}>
+                                        {column.title}
+                                    </option>
+                                ))}
+                        </select> */}
                     </div>
 
                     <div className="mt-6">
-                        <button type="submit">Submit</button>
+                        <Button type="submit" className="w-full" invert>
+                            Submit
+                        </Button>
                     </div>
                 </form>
             </Dialog>

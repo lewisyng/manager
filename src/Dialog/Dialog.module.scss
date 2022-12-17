@@ -1,4 +1,7 @@
 .dialog {
-    padding: 1rem;
-    @apply rounded-lg;
+    padding: 1.5rem 1rem;
+    @apply rounded-2xl;
+    width: clamp(300px, 50vw, 600px);
+    // background-color: rgba(white, 0.5);
+    backdrop-filter: blur(2px);
 }

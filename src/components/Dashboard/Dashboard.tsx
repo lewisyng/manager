@@ -18,11 +18,16 @@ const Dashboard = () => {
 
             <CreateTodoModal />
 
-            <div className="py-6 flex flex-col gap-4">
+            <div className="py-6 flex flex-col gap-4 ">
                 {todos &&
                     todos.map((todo, idx) => (
                         <AnimatePresence key={idx} initial={false}>
                             <Card
+                                label={
+                                    <div>
+                                        <p>{todo.label}</p>
+                                    </div>
+                                }
                                 header={
                                     <div>
                                         <p>{todo.title}</p>

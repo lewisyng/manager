@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { FunctionComponent } from 'react';
 import Label from '../Label/Label';
+import styles from "./Input.module.scss"
 
 type InputProps = {
     type?: string;
@@ -18,9 +19,9 @@ const Input: FunctionComponent<InputProps> = ({
     onChange,
 }) => {
     return (
-        <Label label={label}>
+        <Label label={label || ''}>
             <input
-                className={clsx('outline outline-[1px] text-sm py-1 px-2')}
+                className={clsx(styles["input"], 'outline rounded text-slate-900 outline-[1px] text-sm py-1 px-2 bg-white outline-none border-none')}
                 type={type}
                 name={name}
                 value={value}
