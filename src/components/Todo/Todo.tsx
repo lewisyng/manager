@@ -6,12 +6,10 @@ type TodoProps = {
     todo: TodoType;
 };
 
-const Todo: FunctionComponent<TodoProps> = ({ todo }) => {
+export const Todo: FunctionComponent<TodoProps> = ({ todo }) => {
     return (
         <Card>
             <div>{todo.title}</div>
         </Card>
     );
 };
-
-export default Todo;

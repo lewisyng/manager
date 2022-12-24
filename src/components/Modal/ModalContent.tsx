@@ -9,7 +9,7 @@ type ModalContentProps = {
     closeModal: () => void;
 };
 
-const ModalContent: FunctionComponent<ModalContentProps> = ({
+export const ModalContent: FunctionComponent<ModalContentProps> = ({
     children,
     closeModal,
 }) => {
@@ -47,5 +47,3 @@ const ModalContent: FunctionComponent<ModalContentProps> = ({
         </Portal>
     );
 };
-
-export default ModalContent;

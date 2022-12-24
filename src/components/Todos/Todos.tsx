@@ -1,14 +1,14 @@
+import { Todo } from '@/components';
+import todosSelectors from '@/store/selectors/todos';
+import { useAppSelector } from '@/store/store';
 import { FunctionComponent } from 'react';
-import todosSelectors from '../../store/selectors/todos';
-import { useAppSelector } from '../../store/store';
-import { Todos as TodosType } from '../../store/types/todo';
-import Todo from '../Todo/Todo';
+import { Todos as TodosType } from '@/store/types/todo';
 
 type TodosProps = {
     columnId: string;
 };
 
-const Todos: FunctionComponent<TodosProps> = ({ columnId }) => {
+export const Todos: FunctionComponent<TodosProps> = ({ columnId }) => {
     const state = useAppSelector((state) => state);
     const todos: TodosType = todosSelectors.getTodosFromColumn(state, columnId);
 
@@ -24,5 +24,3 @@ const Todos: FunctionComponent<TodosProps> = ({ columnId }) => {
 
     return null;
 };
-
-export default Todos;

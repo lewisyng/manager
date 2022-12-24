@@ -1,6 +1,6 @@
+import { ModalContent } from '@/components/Modal/ModalContent';
 import { forwardRef, FunctionComponent, useImperativeHandle } from 'react';
 import { useModal } from '../../hooks/useModal';
-import ModalContent from './ModalContent';
 
 type ModalProps = {
     openerClassNames?: string;
@@ -8,7 +8,7 @@ type ModalProps = {
     opener: React.ReactNode;
 };
 
-const Modal = forwardRef<any, ModalProps>(
+export const Modal = forwardRef<any, ModalProps>(
     ({ openerClassNames, children, opener }, ref) => {
         const { modalIsOpen, openModal, closeModal } = useModal();
 
@@ -33,5 +33,3 @@ const Modal = forwardRef<any, ModalProps>(
         );
     }
 );
-
-export default Modal;

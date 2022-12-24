@@ -1,6 +1,6 @@
+import { Label } from '@/components';
 import clsx from 'clsx';
 import { FunctionComponent } from 'react';
-import Label from '../Label/Label';
 import styles from "./Input.module.scss"
 
 type InputProps = {
@@ -11,7 +11,7 @@ type InputProps = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Input: FunctionComponent<InputProps> = ({
+export const Input: FunctionComponent<InputProps> = ({
     type = 'text',
     name,
     value,
@@ -30,5 +30,3 @@ const Input: FunctionComponent<InputProps> = ({
         </Label>
     );
 };
-
-export default Input;

@@ -1,6 +1,6 @@
+import { Icon } from '@/components';
 import clsx from 'clsx';
 import { FunctionComponent } from 'react';
-import Icon from '../Icon/Icon';
 import styles from './Button.module.scss';
 
 type ButtonProps = {
@@ -14,7 +14,7 @@ type ButtonProps = {
     iconHeight?: number;
 };
 
-const Button: FunctionComponent<ButtonProps> = ({
+export const Button: FunctionComponent<ButtonProps> = ({
     children,
     type = 'button',
     variant = 'primary',
@@ -41,5 +41,3 @@ const Button: FunctionComponent<ButtonProps> = ({
         </button>
     );
 };
-
-export default Button;

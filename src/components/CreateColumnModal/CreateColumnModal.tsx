@@ -1,11 +1,11 @@
+import { Modal } from '@/components/Modal';
+import { Button, Input } from '@/components/ui';
+import Dialog from '@/Dialog/Dialog';
 import { useContext, useRef, useState } from 'react';
 import columnApi from '../../api/column';
 import { toastContext } from '../../context/toast/toastContext';
-import Dialog from '../../Dialog/Dialog';
-import Modal from '../Modal/Modal';
-import { Button, Input } from '../ui';
 
-const CreateColumnModal = () => {
+export const CreateColumnModal = () => {
     const modalRef = useRef(null);
     const [title, setTitle] = useState<string>('');
 
@@ -60,5 +60,3 @@ const CreateColumnModal = () => {
         </Modal>
     );
 };
-
-export default CreateColumnModal;

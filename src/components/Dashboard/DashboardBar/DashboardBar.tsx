@@ -1,7 +1,7 @@
-import CreateColumnModal from "../../CreateColumnModal/CreateColumnModal"
-import CreateTodoModal from "../../CreateTodoModal/CreateTodoModal"
+import { CreateColumnModal } from "@/components/CreateColumnModal"
+import { CreateTodoModal } from "@/components/CreateTodoModal"
 
-const DashboardBar = () => {
+export const DashboardBar = () => {
     return (
         <div className="fixed top-10 w-full z-10 px-8 bg-slate-300">
             <div className="flex items-center gap-2">
@@ -11,5 +11,3 @@ const DashboardBar = () => {
         </div>
     )
 }
-
-export default DashboardBar

@@ -1,10 +1,10 @@
 import styles from './Columns.module.scss';
 import clsx from 'clsx';
-import Column from '../Column/Column';
-import columnSelectors from '../store/selectors/columns';
-import { useAppSelector } from '../store/store';
+import columnSelectors from '../../store/selectors/columns';
+import { useAppSelector } from '../../store/store';
+import { Column } from '@/components';
 
-const Columns = () => {
+export const Columns = () => {
     const state = useAppSelector((state) => state);
     const columns = columnSelectors.selectColumns(state);
 
@@ -17,5 +17,3 @@ const Columns = () => {
         </div>
     );
 };
-
-export default Columns;

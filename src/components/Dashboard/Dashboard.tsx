@@ -1,7 +1,7 @@
-import Columns from '../../Columns/Columns';
-import DashboardBar from './DashboardBar/DashboardBar';
+import { Columns } from "@/components/Columns";
+import { DashboardBar } from "@/components/Dashboard/DashboardBar";
 
-const Dashboard = () => {
+export const Dashboard = () => {
     return (
         <div className="font-bold">
             <DashboardBar />
@@ -12,5 +12,3 @@ const Dashboard = () => {
         </div>
     );
 };
-
-export default Dashboard;

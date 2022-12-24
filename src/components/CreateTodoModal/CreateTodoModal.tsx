@@ -6,12 +6,12 @@ import columnSelectors from '../../store/selectors/columns';
 import { setTodos } from '../../store/slices/todos';
 import { useAppSelector } from '../../store/store';
 import { supabase } from '../../supabaseClient';
-import Modal from '../Modal/Modal';
 import { Button, Input } from '../ui';
 import Select from 'react-select';
 import { toastContext } from '../../context/toast/toastContext';
+import { Modal } from '@/components/Modal';
 
-const CreateTodoModal: FunctionComponent = () => {
+export const CreateTodoModal: FunctionComponent = () => {
     const [label, setLabel] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -154,5 +154,3 @@ const CreateTodoModal: FunctionComponent = () => {
         </Modal>
     );
 };
-
-export default CreateTodoModal;

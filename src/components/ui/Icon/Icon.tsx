@@ -6,7 +6,7 @@ type IconProps = {
     iconName: string;
 };
 
-const Icon: FunctionComponent<IconProps> = ({
+export const Icon: FunctionComponent<IconProps> = ({
     width = 24,
     height = 24,
     iconName,
@@ -20,5 +20,3 @@ const Icon: FunctionComponent<IconProps> = ({
         />
     );
 };
-
-export default Icon;
