@@ -9,7 +9,7 @@ const Columns = () => {
     const columns = columnSelectors.selectColumns(state);
 
     return (
-        <div className={clsx(styles.columns, 'flex gap-4')}>
+        <div className={clsx(styles.columns, 'flex gap-4 items-start')}>
             {columns &&
                 columns.map((column, idx) => (
                     <Column key={idx} column={column} />

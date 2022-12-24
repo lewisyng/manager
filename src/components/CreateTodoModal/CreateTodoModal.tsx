@@ -7,7 +7,7 @@ import { setTodos } from '../../store/slices/todos';
 import { useAppSelector } from '../../store/store';
 import { supabase } from '../../supabaseClient';
 import Modal from '../Modal/Modal';
-import { Button, Icon, Input } from '../ui';
+import { Button, Input } from '../ui';
 import Select from 'react-select';
 import { toastContext } from '../../context/toast/toastContext';
 
@@ -76,13 +76,7 @@ const CreateTodoModal: FunctionComponent = () => {
     return (
         <Modal
             ref={modalRef}
-            opener={
-                <>
-                    <Icon />
-                    <p>Create todo</p>
-                </>
-            }
-            openerClassNames="flex items-center gap-4"
+            opener={<Button variant="tertiary">New todo</Button>}
         >
             <Dialog containerClassNames="bg-white">
                 <div className="mb-6">

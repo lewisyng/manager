@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+import Card from '../../Card/Card';
 import { Todo as TodoType } from '../../store/types/todo';
 
 type TodoProps = {
@@ -7,9 +8,9 @@ type TodoProps = {
 
 const Todo: FunctionComponent<TodoProps> = ({ todo }) => {
     return (
-        <div>
+        <Card>
             <div>{todo.title}</div>
-        </div>
+        </Card>
     );
 };
 

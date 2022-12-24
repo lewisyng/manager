@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { FunctionComponent } from 'react';
+import Icon from '../Icon/Icon';
 import styles from './Button.module.scss';
 
 type ButtonProps = {
@@ -8,6 +9,9 @@ type ButtonProps = {
     variant?: 'primary' | 'secondary' | 'tertiary';
     invert?: boolean;
     className?: string;
+    icon?: string;
+    iconWidth?: number;
+    iconHeight?: number;
 };
 
 const Button: FunctionComponent<ButtonProps> = ({
@@ -16,6 +20,9 @@ const Button: FunctionComponent<ButtonProps> = ({
     variant = 'primary',
     invert,
     className,
+    icon,
+    iconWidth,
+    iconHeight,
 }) => {
     return (
         <button
@@ -27,6 +34,9 @@ const Button: FunctionComponent<ButtonProps> = ({
             )}
             type={type}
         >
+            {icon && (
+                <Icon iconName={icon} width={iconWidth} height={iconHeight} />
+            )}
             {children}
         </button>
     );

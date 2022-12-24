@@ -1,16 +1,12 @@
 import Columns from '../../Columns/Columns';
-import CreateColumnModal from '../CreateColumnModal/CreateColumnModal';
-import CreateTodoModal from '../CreateTodoModal/CreateTodoModal';
+import DashboardBar from './DashboardBar/DashboardBar';
 
 const Dashboard = () => {
     return (
-        <div className="px-10 font-bold">
-            <div className="flex items-center gap-2">
-                <CreateColumnModal />
-                <CreateTodoModal />
-            </div>
+        <div className="font-bold">
+            <DashboardBar />
 
-            <div className="overflow-auto w-full">
+            <div className="overflow-scroll w-full mt-8 h-screen px-8 relative top-20">
                 <Columns />
             </div>
         </div>

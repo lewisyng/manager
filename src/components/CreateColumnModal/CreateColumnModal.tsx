@@ -3,7 +3,7 @@ import columnApi from '../../api/column';
 import { toastContext } from '../../context/toast/toastContext';
 import Dialog from '../../Dialog/Dialog';
 import Modal from '../Modal/Modal';
-import { Button, Icon, Input } from '../ui';
+import { Button, Input } from '../ui';
 
 const CreateColumnModal = () => {
     const modalRef = useRef(null);
@@ -24,12 +24,10 @@ const CreateColumnModal = () => {
         <Modal
             ref={modalRef}
             opener={
-                <>
-                    <Icon />
-                    <p>Create column</p>
-                </>
+                <Button variant="tertiary">
+                    New column
+                </Button>
             }
-            openerClassNames="flex items-center gap-4"
         >
             <Dialog containerClassNames="bg-white">
                 <div className="mb-6">

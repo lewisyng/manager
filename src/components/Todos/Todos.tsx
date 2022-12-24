@@ -12,7 +12,17 @@ const Todos: FunctionComponent<TodosProps> = ({ columnId }) => {
     const state = useAppSelector((state) => state);
     const todos: TodosType = todosSelectors.getTodosFromColumn(state, columnId);
 
-    return <div>{todos && todos.map((todo, idx) => <Todo todo={todo} />)}</div>;
+    if (todos && todos.length > 0) {
+        return (
+            <div className="grid gap-4">
+                {todos.map((todo, idx) => (
+                    <Todo key={idx} todo={todo} />
+                ))}
+            </div>
+        );
+    }
+
+    return null;
 };
 
 export default Todos;

@@ -8,7 +8,7 @@ type ColumnProps = {
 
 const Column: FunctionComponent<ColumnProps> = ({ column }) => {
     return (
-        <div>
+        <div className="grid gap-4">
             <ColumnHeader title={column.title} />
             <Todos columnId={column.id} />
         </div>

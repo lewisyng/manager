@@ -1,7 +1,24 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react';
 
-const Icon: FunctionComponent = () => {
-    return <img src="/assets/icons/plus.svg" alt="plus" />;
+type IconProps = {
+    width?: number;
+    height?: number;
+    iconName: string;
+};
+
+const Icon: FunctionComponent<IconProps> = ({
+    width = 24,
+    height = 24,
+    iconName,
+}) => {
+    return (
+        <img
+            src={`/assets/icons/${iconName}.svg`}
+            alt="plus"
+            width={width}
+            height={height}
+        />
+    );
 };
 
 export default Icon;
