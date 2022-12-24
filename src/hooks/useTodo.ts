@@ -15,7 +15,7 @@ export const useTodo = () => {
   const handleSubmit = async (e, todo) => {
     e.preventDefault();
 
-    const { label, title, description, columnId } = todo;
+    const { label, title, description, columnId, count } = todo;
 
     const { data, error } = await supabase
       .from('todo')
@@ -25,6 +25,7 @@ export const useTodo = () => {
         description,
         user_id: user?.id,
         column: columnId,
+        position: count
       })
       .select();
 

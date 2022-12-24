@@ -1,31 +1,21 @@
-import { useState } from 'react';
-import { useColumns } from '../hooks/useColumns';
-import Input from '../components/ui';
+import styles from './Columns.module.scss';
+import clsx from 'clsx';
 import Column from '../Column/Column';
+import columnSelectors from '../store/selectors/columns';
+import { useAppSelector } from '../store/store';
 
 const Columns = () => {
-  return (
-    <>
-      {/* <form onSubmit={(e) => createColumn(e, column)}>
-                <div className="flex items-center gap-4">
-                    <Input
-                        type="text"
-                        name="todo"
-                        value={column}
-                        onChange={(e) => setColumn(e.target.value)}
-                    />
+    const state = useAppSelector((state) => state);
+    const columns = columnSelectors.selectColumns(state);
 
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
-
-            <div className="py-4 flex items-center gap-8">
-                {columns && columns.columns.map((column) => {
-                    return <Column key={column.id} column={column} />;
-                })}
-            </div> */}
-    </>
-  );
+    return (
+        <div className={clsx(styles.columns, 'flex gap-4')}>
+            {columns &&
+                columns.map((column, idx) => (
+                    <Column key={idx} column={column} />
+                ))}
+        </div>
+    );
 };
 
 export default Columns;

@@ -1,8 +1,6 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useContext, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Dialog from '../../Dialog/Dialog';
-import { useModal } from '../../hooks/useModal';
 import { useTodo } from '../../hooks/useTodo';
 import columnSelectors from '../../store/selectors/columns';
 import { setTodos } from '../../store/slices/todos';
@@ -11,6 +9,7 @@ import { supabase } from '../../supabaseClient';
 import Modal from '../Modal/Modal';
 import { Button, Icon, Input } from '../ui';
 import Select from 'react-select';
+import { toastContext } from '../../context/toast/toastContext';
 
 const CreateTodoModal: FunctionComponent = () => {
     const [label, setLabel] = useState('');
@@ -39,14 +38,32 @@ const CreateTodoModal: FunctionComponent = () => {
 
     const columns = columnSelectors.selectColumns(state);
 
+    const modalRef = useRef(null);
+    const { notify } = useContext(toastContext);
+
     const dispatch = useDispatch();
 
     const _handleSubmit = async (e) => {
-        await handleSubmit(e, { label, title, description, columnId });
+        e.preventDefault();
+        const { count } = await supabase
+            .from('todo')
+            .select('*', { count: 'exact' });
+
+        await handleSubmit(e, {
+            label,
+            title,
+            description,
+            columnId,
+            count,
+        });
 
         const { data: t, error } = await supabase.from('todo').select();
 
         dispatch(setTodos(t));
+
+        modalRef.current?.handleCloseModal();
+
+        notify('Todo was created');
 
         // closeModal();
     };
@@ -58,6 +75,7 @@ const CreateTodoModal: FunctionComponent = () => {
 
     return (
         <Modal
+            ref={modalRef}
             opener={
                 <>
                     <Icon />

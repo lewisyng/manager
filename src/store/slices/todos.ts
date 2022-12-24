@@ -11,7 +11,6 @@ export const todosSlice = createSlice({
   reducers: {
     setTodos(state, action) {
       const todos = action.payload || [];
-      console.log('action', action);
       state.todos = [...todos];
       // state.todos = action.payload
     },

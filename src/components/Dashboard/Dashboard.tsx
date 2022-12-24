@@ -1,46 +1,17 @@
-import { AnimatePresence } from 'framer-motion';
-import Card from '../../Card/Card';
 import Columns from '../../Columns/Columns';
-import { useModal } from '../../hooks/useModal';
-import todosSelectors from '../../store/selectors/todos';
-import { useAppSelector } from '../../store/store';
-import { Todos } from '../../store/types/todo';
-import Icon from '../ui/Icon/Icon';
+import CreateColumnModal from '../CreateColumnModal/CreateColumnModal';
 import CreateTodoModal from '../CreateTodoModal/CreateTodoModal';
 
 const Dashboard = () => {
-    const state = useAppSelector((state) => state);
-    const todos: Todos = todosSelectors.getTodos(state);
-
     return (
-        <div className="container font-bold">
-            <Columns />
+        <div className="px-10 font-bold">
+            <div className="flex items-center gap-2">
+                <CreateColumnModal />
+                <CreateTodoModal />
+            </div>
 
-            <CreateTodoModal />
-
-            <div className="py-6 flex flex-col gap-4 ">
-                {todos &&
-                    todos.map((todo, idx) => (
-                        <AnimatePresence key={idx} initial={false}>
-                            <Card
-                                label={
-                                    <div>
-                                        <p>{todo.label}</p>
-                                    </div>
-                                }
-                                header={
-                                    <div>
-                                        <p>{todo.title}</p>
-                                    </div>
-                                }
-                                body={
-                                    <div>
-                                        <p>{todo.description}</p>
-                                    </div>
-                                }
-                            />
-                        </AnimatePresence>
-                    ))}
+            <div className="overflow-auto w-full">
+                <Columns />
             </div>
         </div>
     );

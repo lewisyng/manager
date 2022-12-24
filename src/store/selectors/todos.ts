@@ -1,19 +1,27 @@
-import { createSelector } from "@reduxjs/toolkit";
-import { RootState } from "../store";
+import { createSelector } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 
 const getTodosSlice = createSelector(
     (state: RootState) => state,
-    state => state.todos
-)
+    (state) => state.todos
+);
 
-const getTodos = createSelector(
+const getTodos = createSelector(getTodosSlice, (state) => state.todos);
+
+const getTodosFromColumn = createSelector(
     getTodosSlice,
-    state => state.todos
-)
+    (state: RootState, columnId: string) => columnId,
+    (state, columnId) => {
+        return state.todos.filter(
+            (todo) => String(todo.column) === String(columnId)
+        );
+    }
+);
 
 const todosSelectors = {
     getTodos,
-    getTodosSlice
-}
+    getTodosFromColumn,
+    getTodosSlice,
+};
 
-export default todosSelectors
+export default todosSelectors;
