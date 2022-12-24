@@ -3,7 +3,7 @@ import Signup from './Auth/Signup/Signup';
 
 export default function Auth() {
     return (
-        <div>
+        <div className="relative top-20">
             <Login />
             <Signup />
         </div>
