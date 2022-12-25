@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from '../App';
-import Signup from '../Auth/Signup/Signup';
+import Signup from '../components/Auth/Signup/Signup';
 import Layout from '../Layout/Layout';
-import Login from '../Auth/Login/Login';
-import { ProfileSettings } from '../ProfileSettings/ProfileSettings';
+import Login from '../components/Auth/Login/Login';
+import { ProfileSettings } from '../components/ProfileSettings/ProfileSettings';
 import loaders from '../loaders/loader';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../store/store';

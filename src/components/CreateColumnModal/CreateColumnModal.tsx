@@ -1,6 +1,6 @@
 import { Modal } from '@/components/Modal';
 import { Button, Input } from '@/components/ui';
-import Dialog from '@/Dialog/Dialog';
+import Dialog from '@/components/Dialog/Dialog';
 import { useContext, useRef, useState } from 'react';
 import columnApi from '../../api/column';
 import { toastContext } from '../../context/toast/toastContext';
@@ -23,11 +23,7 @@ export const CreateColumnModal = () => {
     return (
         <Modal
             ref={modalRef}
-            opener={
-                <Button variant="tertiary">
-                    New column
-                </Button>
-            }
+            opener={<Button variant="tertiary">New column</Button>}
         >
             <Dialog containerClassNames="bg-white">
                 <div className="mb-6">

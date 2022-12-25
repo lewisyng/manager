@@ -1,5 +1,5 @@
-import Login from './Auth/Login/Login';
-import Signup from './Auth/Signup/Signup';
+import Login from './Login/Login';
+import Signup from './Signup/Signup';
 
 export default function Auth() {
     return (

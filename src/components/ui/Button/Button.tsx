@@ -4,7 +4,7 @@ import { FunctionComponent } from 'react';
 import styles from './Button.module.scss';
 
 type ButtonProps = {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     type?: 'button' | 'submit' | 'reset';
     variant?: 'primary' | 'secondary' | 'tertiary';
     invert?: boolean;
@@ -12,6 +12,7 @@ type ButtonProps = {
     icon?: string;
     iconWidth?: number;
     iconHeight?: number;
+    onClick: () => void;
 };
 
 export const Button: FunctionComponent<ButtonProps> = ({
@@ -23,6 +24,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
     icon,
     iconWidth,
     iconHeight,
+    onClick,
 }) => {
     return (
         <button
@@ -33,6 +35,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
                 className
             )}
             type={type}
+            onClick={onClick}
         >
             {icon && (
                 <Icon iconName={icon} width={iconWidth} height={iconHeight} />

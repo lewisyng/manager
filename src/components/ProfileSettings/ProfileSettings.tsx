@@ -1,6 +1,6 @@
-import { useProfile } from '../hooks/useProfile';
+import { useProfile } from '../../hooks/useProfile';
 import { useContext } from 'react';
-import SessionContext from '../context/session/sessionContext';
+import SessionContext from '../../context/session/sessionContext';
 
 export const ProfileSettings = () => {
     const { session } = useContext(SessionContext);

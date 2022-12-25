@@ -1,6 +1,6 @@
 import { FunctionComponent, useContext, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Dialog from '../../Dialog/Dialog';
+import Dialog from '../Dialog/Dialog';
 import { useTodo } from '../../hooks/useTodo';
 import columnSelectors from '../../store/selectors/columns';
 import { setTodos } from '../../store/slices/todos';

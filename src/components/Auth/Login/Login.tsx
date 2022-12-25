@@ -1,11 +1,22 @@
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../../hooks/useAuth';
+import { useSession } from '../../../hooks/useSession';
+import { redirect } from 'react-router-dom';
 
-const Signup = () => {
-    const { handleSignup, email, setEmail, password, setPassword } = useAuth();
+const Login = () => {
+    const { email, password, setEmail, setPassword, handleLogin } = useAuth();
+    const { isLoggedIn } = useSession();
+
+    console.log('isLoggedIn', isLoggedIn);
+
+    if (isLoggedIn) {
+        redirect('/');
+    }
 
     return (
         <div>
-            <form onSubmit={handleSignup}>
+            <h1>Login</h1>
+
+            <form onSubmit={handleLogin}>
                 <label>
                     Email
                     <input
@@ -27,10 +38,11 @@ const Signup = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
-                <button>Signup</button>
+
+                <button type="submit">Login</button>
             </form>
         </div>
     );
 };
 
-export default Signup;
+export default Login;
