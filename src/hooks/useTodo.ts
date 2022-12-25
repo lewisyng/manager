@@ -1,3 +1,4 @@
+import api from '@/api';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import userSelectors from '../store/selectors/user';
@@ -6,58 +7,60 @@ import { useAppSelector } from '../store/store';
 import { supabase } from '../supabaseClient';
 
 export const useTodo = () => {
-  const state = useAppSelector((state) => state);
-  const [todo, setTodo] = useState('');
-  const dispatch = useDispatch();
+    const state = useAppSelector((state) => state);
+    const [todo, setTodo] = useState('');
+    const dispatch = useDispatch();
 
-  const user = userSelectors.selectUser(state);
+    const user = userSelectors.selectUser(state);
 
-  const handleSubmit = async (e, todo) => {
-    e.preventDefault();
+    // const handleSubmit = async (data) => {
+    //     e.preventDefault();
 
-    const { label, title, description, columnId, count } = todo;
+    //     const { label, title, description, columnId, count } = todo;
 
-    const { data, error } = await supabase
-      .from('todo')
-      .insert({
-        label,
-        title,
-        description,
-        user_id: user?.id,
-        column: columnId,
-        position: count
-      })
-      .select();
+    //     const todos = api.createTodo(data);
 
-    dispatch(setTodos(data));
+    //     const { data, error } = await supabase
+    //         .from('todo')
+    //         .insert({
+    //             label,
+    //             title,
+    //             description,
+    //             user_id: user?.id,
+    //             column: columnId,
+    //             position: count,
+    //         })
+    //         .select();
 
-    if (error) throw error;
-  };
+    //     if (error) throw error;
 
-  // const deleteTodo = async (todo) => {
-  //     try {
-  //         const { error } = await supabase
-  //             .from('todo')
-  //             .delete()
-  //             .eq('id', todo.id);
+    //     dispatch(setTodos(data));
+    // };
 
-  //         if (error) {
-  //             throw error;
-  //         }
-  //     } catch (err) {
-  //         console.log('error', err);
-  //     }
+    // const deleteTodo = async (todo) => {
+    //     try {
+    //         const { error } = await supabase
+    //             .from('todo')
+    //             .delete()
+    //             .eq('id', todo.id);
 
-  //     const { data, error: err } = await supabase.from('todo').select();
+    //         if (error) {
+    //             throw error;
+    //         }
+    //     } catch (err) {
+    //         console.log('error', err);
+    //     }
 
-  //     if (err) return err;
+    //     const { data, error: err } = await supabase.from('todo').select();
 
-  //     setTodos(data);
-  // };
+    //     if (err) return err;
 
-  return {
-    todo,
-    handleSubmit,
-    setTodo,
-  };
+    //     setTodos(data);
+    // };
+
+    return {
+        todo,
+        handleSubmit,
+        setTodo,
+    };
 };

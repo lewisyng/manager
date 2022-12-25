@@ -11,13 +11,23 @@ const fetchAllTodos = async () => {
 };
 
 const deleteTodo = async (id) => {
+    const { data, error } = await supabase.from('todo').delete().eq('id', id);
+};
+
+const createTodo = async (d) => {
     const { data, error } = await supabase
-            .from('todo')
-            .delete()
-            .eq('id', id);
-}
+        .from('todo')
+        .insert({
+            ...d,
+        })
+
+    if (error) throw error;
+
+    return data;
+};
 
 const todoApi = {
+    createTodo,
     deleteTodo,
     fetchAllTodos,
 };
