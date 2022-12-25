@@ -12,7 +12,7 @@ type ButtonProps = {
     icon?: string;
     iconWidth?: number;
     iconHeight?: number;
-    onClick: () => void;
+    onClick?: () => void;
 };
 
 export const Button: FunctionComponent<ButtonProps> = ({
