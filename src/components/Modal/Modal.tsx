@@ -1,4 +1,5 @@
 import { ModalContent } from '@/components/Modal/ModalContent';
+import clsx from 'clsx';
 import { forwardRef, ReactNode, useImperativeHandle } from 'react';
 import { useModal } from '../../hooks/useModal';
 
@@ -9,7 +10,7 @@ type ModalProps = {
 };
 
 export const Modal = forwardRef<any, ModalProps>(
-    ({ openerClassNames, children, opener}, ref) => {
+    ({ openerClassNames, children, opener }, ref) => {
         const { modalIsOpen, openModal, closeModal } = useModal();
 
         useImperativeHandle(ref, () => ({
@@ -20,7 +21,10 @@ export const Modal = forwardRef<any, ModalProps>(
 
         return (
             <>
-                <button className={openerClassNames} onClick={openModal}>
+                <button
+                    className={clsx('text-left', openerClassNames)}
+                    onClick={openModal}
+                >
                     {opener}
                 </button>
 
