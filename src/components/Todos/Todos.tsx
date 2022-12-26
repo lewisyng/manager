@@ -12,7 +12,9 @@ type TodosProps = {
 
 export const Todos: FunctionComponent<TodosProps> = ({ columnId }) => {
     const state = useAppSelector((state) => state);
-    const todos: TodosType = todosSelectors.getTodosFromColumn(state, columnId);
+    const t: TodosType = todosSelectors.getTodosFromColumn(state, columnId);
+
+    const todos = t.sort((a, b) => a.position - b.position);
 
     const dispatch = useAppDispatch();
 

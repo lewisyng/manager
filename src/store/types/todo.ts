@@ -6,6 +6,7 @@ export type Todo = {
   title: string;
   description: string;
   column: number;
+  position: number;
 };
 
 export type Todos = Todo[];
