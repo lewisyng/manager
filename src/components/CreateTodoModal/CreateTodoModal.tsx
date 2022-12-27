@@ -1,5 +1,6 @@
 import api from '@/api';
 import Dialog from '@/components/Dialog/Dialog';
+import { ModalProps } from '@/components/Modal/types';
 import { Button, Input } from '@/components/ui';
 import { toastContext } from '@/context/toast/toastContext';
 import columnSelectors from '@/store/selectors/columns';
@@ -10,16 +11,13 @@ import { supabase } from '@/supabaseClient';
 import { FunctionComponent, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 
-type CreateTodoModalProps = { closeModal: () => void; columnId: string };
+type CreateTodoModalProps = ModalProps & { columnId: string };
 
 export const CreateTodoModal: FunctionComponent<CreateTodoModalProps> = ({
     closeModal,
     columnId,
 }) => {
-    const {
-        register,
-        handleSubmit,
-    } = useForm({
+    const { register, handleSubmit } = useForm({
         defaultValues: {
             label: '',
             title: '',
@@ -53,7 +51,7 @@ export const CreateTodoModal: FunctionComponent<CreateTodoModalProps> = ({
 
         const todos = await api.fetchAllTodos();
 
-        dispatch(setTodos(todos))
+        dispatch(setTodos(todos));
 
         notify('Todo was created');
 

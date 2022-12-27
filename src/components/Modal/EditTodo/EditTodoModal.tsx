@@ -35,8 +35,6 @@ export const EditTodoModal: FunctionComponent<EditTodoModalProps> = ({
     const _handleSubmit = async (data, e) => {
         e.preventDefault();
 
-        console.log('todo', todo);
-
         const { error } = await supabase
             .from('todo')
             .update({ ...todo, ...data })

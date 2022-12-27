@@ -24,6 +24,7 @@ export const Modal = forwardRef<any, ModalProps>(
                 <button
                     className={clsx('text-left', openerClassNames)}
                     onClick={openModal}
+                    type="button"
                 >
                     {opener}
                 </button>

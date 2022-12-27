@@ -15,8 +15,17 @@ const createColumn = async (title: string) => {
     return data;
 };
 
+const fetchAllColumns = async () => {
+    const { data, error } = await supabase.from('columns').select();
+
+    if (error) throw error;
+
+    return data;
+};
+
 const columnApi = {
     createColumn,
+    fetchAllColumns,
 };
 
 export default columnApi;
